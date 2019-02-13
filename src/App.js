@@ -32,8 +32,6 @@ class App extends React.Component {
     }
   }
 
-  // HANDLING FUNCTIONS
-    
     addTodo = (Todo) => {
       this.setState(st => ({todos: st.todos.concat({ 
         task: Todo,
@@ -41,13 +39,20 @@ class App extends React.Component {
         completed : "false" 
       })}))
     }
-    
-    
+  
+    toggleCompleted = (idx) => {
+      this.state.todos.foreach(todo => {
+        if (todo.id === idx+1) {
+          this.setState(st => ({ completed: "true" }));
+        }}
+      )
+    }
+  
   render() {
     return (
       <div>
         <h2>To do list: MVP!</h2>
-        <TodoList list={this.state.todos} />
+        <TodoList toggleCompleted={this.toggleCompleted} list={this.state.todos} />
         <TodoForm addTodo={this.addTodo}/>
       </div>
       

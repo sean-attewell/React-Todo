@@ -3,16 +3,19 @@
 import React from 'react';
 import Todo from './Todo';
 
-const TodoList = ({ list }) => {
+const TodoList = ({ list, toggleCompleted }) => {
     return (
         <div>
             {list.map((todo, idx) => {
                 return (
-                    <Todo task={todo.task} completed={todo.completed}  key={idx}/>
+                    <Todo 
+                        // onClick={toggleCompleted(idx)} 
+                        task={todo.task} 
+                        completed={todo.completed}  
+                        key={idx}/>
                 )  
             })
             }
-            
         </div>
     );
 }
