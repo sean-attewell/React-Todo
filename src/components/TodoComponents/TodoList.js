@@ -10,7 +10,9 @@ const TodoList = (props) => {
                 return (
                     <Todo task={todo.task} completed={todo.completed}  key={idx}/>
                 );
+                
             })}
+            
         </div>
     );
 }
