@@ -3,15 +3,15 @@
 import React from 'react';
 import Todo from './Todo';
 
-const TodoList = (props) => {
+const TodoList = ({ list }) => {
     return (
         <div>
-            {props.list.map((todo, idx) => {
+            {list.map((todo, idx) => {
                 return (
                     <Todo task={todo.task} completed={todo.completed}  key={idx}/>
-                );
-                
-            })}
+                )  
+            })
+            }
             
         </div>
     );
