@@ -1,23 +1,25 @@
-// your components will all go in this `component` directory.
-// feel free to change this component.js into TodoList.js
 import React from 'react';
+
 import Todo from './Todo';
 
-const TodoList = ({ list, toggleCompleted }) => {
+const TodoList = props => {
     return (
         <div>
-            {list.map((todo, idx) => {
-                return (
-                    <Todo 
-                        // onClick={toggleCompleted(idx)} 
-                        task={todo.task} 
-                        completed={todo.completed}  
-                        key={idx}/>
-                )  
-            })
-            }
+            {props.todos.map(todo => (
+                <Todo
+                    handleToggleComplete={props.handleToggleComplete}
+                    key={todo.id}
+                    todo={todo}
+                />
+            ))}
         </div>
     );
-}
+};
 
 export default TodoList;
+
+// we passed down the whole todos as a prop, along with toggle method.
+
+// map over todos, handing that particular todo object into a Todo component
+// also give the Todo component the particular id as a key
+// and give it the toggle method
