@@ -1,41 +1,26 @@
 import React from 'react';
 
-
-class TodoForm extends React.Component {
-    state = {
-        input: '',
-    }
-    
-    changeHandler = (event) => {
-        // console.log(event);
-        // console.log(event.target);
-        // console.log(event.target.value);
-        this.setState({
-            input: event.target.value,
-        });
-    }
-    
-    onButtonClick = (event) => {
-        event.preventDefault();
-        this.props.addTodo(this.state.input);
-        this.clearInput();
-    }
-
-    clearInput = () => {
-        this.setState({ input: '' });
-    }
-
-    render () {
-        return (
-            <div>
-                <form>
-                    <input type="text" placeholder="Your To-Do..." value={this.state.input} onChange={this.changeHandler} />
-                    <input type="submit" value="Add Todo" onClick={this.onButtonClick} />
-                    <input type="submit" value="Clear Completed" />
-                </form> 
-            </div>
-        );
-    }
-}
+const TodoForm = props => {
+    return (
+        <form>
+            <input
+                onChange={props.handleTodoChange}
+                type="text"
+                name="todo"
+                value={props.value}
+                placeholder="...todo"
+            />
+            <button onClick={props.handleAddTodo}>Add Todo</button>
+            <button onClick={props.handleClearTodos}>Clear Completed</button>
+        </form>
+    );
+};
 
 export default TodoForm;
+
+// all methods have been passed down to it to call with props
+// they invoke without brackets because methods stored in variables
+
+// changeTodo sets todo state in App to whatever the event value is (typed in)
+// It selects the todo state in App by referencing the event target name to make it
+// reusable. 
